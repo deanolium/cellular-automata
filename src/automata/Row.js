@@ -8,7 +8,9 @@ class Row extends Component {
 
     return (
       <div className="Row">
-        {cs.map(cellstate => <Cell active={cellstate} />)}
+        {cs.map((cellstate, i) => (
+          <Cell key={`cell-${i}`} active={cellstate} />
+        ))}
       </div>
     );
   }

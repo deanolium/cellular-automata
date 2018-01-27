@@ -157,8 +157,8 @@ class App extends Component {
           {funky_btn}
           <div onClick={this.rerandomize.bind(this)}>Randomize</div>
         </div>
-        {this._rows.map(data => {
-          return <Row states={JSON.stringify(data)} />;
+        {this._rows.map((data, i) => {
+          return <Row key={`row-${i}`} states={JSON.stringify(data)} />;
         })}
       </div>
     );
