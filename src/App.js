@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Row from "./automata/Row";
+import EditableLabel from "./misc/EditableLabel";
 
 class App extends Component {
   _rows = [];
@@ -139,7 +140,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Rule Id: {this.state.ruleId}</h1>
+        <h1>
+          Rule Id:
+          <EditableLabel
+            initialValue={this.state.ruleId}
+            save={value => {
+              var iValue = parseInt(value);
+              this.setState({ ruleId: iValue });
+            }}
+          />
+        </h1>
         <div className="controls">
           <div onClick={this.back.bind(this)}>Prev</div>
           {play_pause_btn}
