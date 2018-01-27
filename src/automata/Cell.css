@@ -1,0 +1,13 @@
+.Cell {
+  width: 8px;
+  height: 8px;
+  margin: 1px;
+}
+
+.Cell.active {
+  background-color: #ff6666;
+}
+
+.Cell.inactive {
+  background-color: #330000;
+}
