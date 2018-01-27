@@ -3,7 +3,10 @@ import "./Cell.css";
 
 class Cell extends Component {
   render() {
-    var activeStyle = this.props.active ? "active" : "inactive";
+    const activeStyle = this.props.transition
+      ? this.props.active ? "active" : "inactive"
+      : this.props.active ? "fast_active" : "fast_inactive";
+
     return <div className={"Cell " + activeStyle} />;
   }
 }
