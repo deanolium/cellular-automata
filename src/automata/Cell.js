@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import "./Cell.css";
 
 class Cell extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const activeStyle = this.props.transition
       ? this.props.active ? "active" : "inactive"

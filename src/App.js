@@ -152,6 +152,7 @@ class App extends Component {
           <EditableLabel
             initialValue={this.state.ruleId}
             save={value => {
+              // eslint-disable-next-line
               var iValue = parseInt(value);
               this.setState({ ruleId: iValue });
             }}
