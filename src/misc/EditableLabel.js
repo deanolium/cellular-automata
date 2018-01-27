@@ -1,3 +1,14 @@
+/**
+ * EditableLabel
+ *
+ * A React Component which displays a label text until you edit it,
+ * in which case, it then turns into an input tag
+ *
+ * Based on the code in this codepen: https://codepen.io/dbrowne/pen/JKjKgN By David Browne
+ *
+ * @author David Browne
+ * @author Deano License <deanolium@gmail.com>
+ */
 import React, { Component } from "react";
 import "./EditableLabel.css";
 
