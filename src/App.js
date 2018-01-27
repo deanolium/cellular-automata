@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       ruleId: 0,
       paused: true,
-      funky: false
+      funky: false,
+      transition: false
     };
   }
 
@@ -59,10 +60,11 @@ class App extends Component {
     setInterval(() => {
       if (!this.state.paused) {
         this.setState({
-          ruleId: this.state.ruleId + 1
+          ruleId: this.state.ruleId + 1,
+          transition: false
         });
       }
-    }, 100);
+    }, 50);
   }
 
   pause() {
@@ -73,21 +75,24 @@ class App extends Component {
 
   play() {
     this.setState({
-      paused: false
+      paused: false,
+      transition: false
     });
   }
 
   back() {
     this.setState({
       paused: true,
-      ruleId: this.state.ruleId - 1
+      ruleId: this.state.ruleId - 1,
+      transition: true
     });
   }
 
   next() {
     this.setState({
       paused: true,
-      ruleId: this.state.ruleId + 1
+      ruleId: this.state.ruleId + 1,
+      transition: true
     });
   }
 
@@ -120,6 +125,7 @@ class App extends Component {
           this._rows[i - 1]
         );
       }
+
       funky_btn = <div onClick={this.stopFunk.bind(this)}>No Funky</div>;
     } else {
       for (i = 1; i < this.numRows; ++i) {
@@ -128,6 +134,7 @@ class App extends Component {
           this._rows[i - 1]
         );
       }
+
       funky_btn = <div onClick={this.startFunk.bind(this)}>Funky</div>;
     }
 
@@ -158,7 +165,13 @@ class App extends Component {
           <div onClick={this.rerandomize.bind(this)}>Randomize</div>
         </div>
         {this._rows.map((data, i) => {
-          return <Row key={`row-${i}`} states={JSON.stringify(data)} />;
+          return (
+            <Row
+              key={`row-${i}`}
+              transition={this.state.transition}
+              states={JSON.stringify(data)}
+            />
+          );
         })}
       </div>
     );

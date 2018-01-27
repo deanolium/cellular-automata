@@ -9,7 +9,11 @@ class Row extends Component {
     return (
       <div className="Row">
         {cs.map((cellstate, i) => (
-          <Cell key={`cell-${i}`} active={cellstate} />
+          <Cell
+            key={`cell-${i}`}
+            transition={this.props.transition}
+            active={cellstate}
+          />
         ))}
       </div>
     );

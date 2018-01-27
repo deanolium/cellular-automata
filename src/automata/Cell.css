@@ -1,13 +1,27 @@
 .Cell {
   width: 8px;
   height: 8px;
-  margin: 1px;
+  margin: 0px;
+}
+
+.Cell.fast_active,
+.Cell.active {
+  background-color: #ff0000;
+}
+
+.Cell.fast_inactive,
+.Cell.inactive {
+  background-color: #000000;
 }
 
 .Cell.active {
-  background-color: #ff6666;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
 }
 
 .Cell.inactive {
-  background-color: #330000;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
 }
