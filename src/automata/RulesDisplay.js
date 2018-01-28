@@ -15,7 +15,7 @@ class RulesDisplay extends Component {
 
     // Check the range
     if (ruleItemId > 7 || ruleItemId < 0) {
-      throw `Item Id ${ruleItemId} out of range`;
+      throw new Error(`Item Id ${ruleItemId} out of range`);
     }
 
     // bit test ruleItemId to get the left, center and right parts
