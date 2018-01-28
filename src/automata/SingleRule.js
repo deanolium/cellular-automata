@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./SingleRule.css";
 
 class SingleRule extends Component {
   // Displays a given rule via small squares

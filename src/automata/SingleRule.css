@@ -1,0 +1,23 @@
+.ruleContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 48px;
+  justify-content: center;
+  margin: 2px;
+}
+
+.rulebox {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #440044;
+  margin: 2px;
+}
+
+.active {
+  background-color: #440044;
+}
+
+.inactive {
+  background-color: #eeddee;
+}
