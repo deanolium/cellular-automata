@@ -12,7 +12,55 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Rules Display", () => {
   it("Displays eight single rules for the given rule id");
 
-  it("Determines the ruleset for the given rule id", () => {});
+    expect(
+      mount(<RulesDisplay rule={0} />).matchesElement(expectedOutput)
+    ).toBeTruthy();
+  });
+
+  it("Determines the ruleset for the given rule id", () => {
+    const rulesDisplay = new RulesDisplay();
+
+    expect(rulesDisplay.getResultsForRuleset(0)).toEqual([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]);
+    expect(rulesDisplay.getResultsForRuleset(1)).toEqual([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true
+    ]);
+    expect(rulesDisplay.getResultsForRuleset(32)).toEqual([
+      false,
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]);
+    expect(rulesDisplay.getResultsForRuleset(60)).toEqual([
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ]);
+  });
 
   it("Throws exception for out of range single rule", () => {
     const rulesDisplay = new RulesDisplay();

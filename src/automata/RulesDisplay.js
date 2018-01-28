@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import SingleRule from "./SingleRule";
 
 class RulesDisplay extends Component {
+  getResultsForRuleset(ruleId) {
+    // returns the single rule results for the given rule id
+    var results = [];
+    // lets use functional programming as it's fun
+
+    return [...Array(8).keys()].map(x => ((1 << (7 - x)) & ruleId) !== 0);
+  }
+
   createSingleRule(ruleItemId, result) {
     // Creates a single rule based on the id
 
