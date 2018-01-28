@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Row from "./automata/Row";
 import EditableLabel from "./misc/EditableLabel";
+import RulesDisplay from "./automata/RulesDisplay";
 
 class App extends Component {
   _rows = [];
@@ -158,6 +159,7 @@ class App extends Component {
             }}
           />
         </h1>
+        <RulesDisplay rule={this.state.ruleId} />
         <div className="controls">
           <div onClick={this.prev.bind(this)}>Prev</div>
           {play_pause_btn}
