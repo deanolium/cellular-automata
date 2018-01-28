@@ -5,7 +5,6 @@ class SingleRule extends Component {
   // Displays a given rule via small squares
 
   render() {
-    console.log(this.props.left);
     const leftClass = this.props.left ? "active" : "inactive";
     const centerClass = this.props.center ? "active" : "inactive";
     const rightClass = this.props.right ? "active" : "inactive";
