@@ -10,11 +10,29 @@ import SingleRule from "./SingleRule";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Rules Display", () => {
-  it("Displays eight single rules for the given rule id");
+  it("Displays eight single rules for the given rule id", () => {
+    // This is really an integration test... Should fix...
+    const rulesDisplay = new RulesDisplay();
 
-    expect(
-      mount(<RulesDisplay rule={0} />).matchesElement(expectedOutput)
-    ).toBeTruthy();
+    const generateSingleRule = (left, center, right, result) => (
+      <SingleRule left={left} center={center} right={right} result={result} />
+    );
+
+    const expectedOutput = (
+      <div>
+        {generateSingleRule(true, true, true, false)}
+        {generateSingleRule(true, true, false, false)}
+        {generateSingleRule(true, false, true, false)}
+        {generateSingleRule(true, false, false, false)}
+        {generateSingleRule(false, true, true, false)}
+        {generateSingleRule(false, true, false, false)}
+        {generateSingleRule(false, false, true, false)}
+        {generateSingleRule(false, false, false, false)}
+      </div>
+    );
+
+    const wrapper = mount(<RulesDisplay rule={0} />);
+    expect(wrapper.children().matchesElement(expectedOutput)).toBeTruthy();
   });
 
   it("Determines the ruleset for the given rule id", () => {

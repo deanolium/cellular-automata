@@ -24,7 +24,13 @@ class RulesDisplay extends Component {
     const right = ((1 << 0) & ruleItemId) !== 0;
 
     return (
-      <SingleRule left={left} center={center} right={right} result={result} />
+      <SingleRule
+        key={`ruleItem-${ruleItemId}`}
+        left={left}
+        center={center}
+        right={right}
+        result={result}
+      />
     );
   }
 
@@ -33,8 +39,11 @@ class RulesDisplay extends Component {
   }
 
   render() {
-    // need to generate single rules
-    const ruleElements = <SingleRule />;
+    const resultTable = this.getResultsForRuleset(this.props.rule);
+
+    const ruleElements = resultTable.map((result, i) =>
+      this.createSingleRule(7 - i, result)
+    );
 
     return <div className="RuleList">{ruleElements}</div>;
   }
