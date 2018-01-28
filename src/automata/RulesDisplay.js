@@ -5,7 +5,6 @@ import "./RulesDisplay.css";
 class RulesDisplay extends Component {
   getResultsForRuleset(ruleId) {
     // returns the single rule results for the given rule id
-    var results = [];
     // lets use functional programming as it's fun
 
     return [...Array(8).keys()].map(x => ((1 << (7 - x)) & ruleId) !== 0);
