@@ -18,7 +18,7 @@ describe("Rules Display", () => {
       <SingleRule left={left} center={center} right={right} result={result} />
     );
 
-    const expectedOutput = (
+    let expectedOutput = (
       <div>
         {generateSingleRule(true, true, true, false)}
         {generateSingleRule(true, true, false, false)}
@@ -31,7 +31,23 @@ describe("Rules Display", () => {
       </div>
     );
 
-    const wrapper = mount(<RulesDisplay rule={0} />);
+    let wrapper = mount(<RulesDisplay rule={0} />);
+    expect(wrapper.children().matchesElement(expectedOutput)).toBeTruthy();
+
+    expectedOutput = (
+      <div>
+        {generateSingleRule(true, true, true, false)}
+        {generateSingleRule(true, true, false, false)}
+        {generateSingleRule(true, false, true, false)}
+        {generateSingleRule(true, false, false, false)}
+        {generateSingleRule(false, true, true, false)}
+        {generateSingleRule(false, true, false, false)}
+        {generateSingleRule(false, false, true, false)}
+        {generateSingleRule(false, false, false, true)}
+      </div>
+    );
+
+    wrapper = mount(<RulesDisplay rule={1} />);
     expect(wrapper.children().matchesElement(expectedOutput)).toBeTruthy();
   });
 

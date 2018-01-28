@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SingleRule from "./SingleRule";
+import "./RulesDisplay.css";
 
 class RulesDisplay extends Component {
   getResultsForRuleset(ruleId) {
