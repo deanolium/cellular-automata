@@ -5,8 +5,8 @@ import EditableLabel from "./misc/EditableLabel";
 
 class App extends Component {
   _rows = [];
-  numCells = 100;
-  numRows = 50;
+  _numCells = 100;
+  _numRows = 50;
 
   constructor() {
     super();
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   setupRandomRow() {
-    return [...Array(this.numCells)].map(
+    return [...Array(this._numCells)].map(
       () => Math.floor(Math.random() * 2) === 0
     );
   }
@@ -80,7 +80,7 @@ class App extends Component {
     });
   }
 
-  back() {
+  prev() {
     this.setState({
       paused: true,
       ruleId: this.state.ruleId - 1,
@@ -119,7 +119,7 @@ class App extends Component {
     var funky_btn, i;
 
     if (this.state.funky) {
-      for (i = 1; i < this.numRows; ++i) {
+      for (i = 1; i < this._numRows; ++i) {
         this._rows[i] = this.generateNewRowFromRuleIdAndData(
           this.state.ruleId + i - 1,
           this._rows[i - 1]
@@ -128,7 +128,7 @@ class App extends Component {
 
       funky_btn = <div onClick={this.stopFunk.bind(this)}>No Funky</div>;
     } else {
-      for (i = 1; i < this.numRows; ++i) {
+      for (i = 1; i < this._numRows; ++i) {
         this._rows[i] = this.generateNewRowFromRuleIdAndData(
           this.state.ruleId,
           this._rows[i - 1]
@@ -159,7 +159,7 @@ class App extends Component {
           />
         </h1>
         <div className="controls">
-          <div onClick={this.back.bind(this)}>Prev</div>
+          <div onClick={this.prev.bind(this)}>Prev</div>
           {play_pause_btn}
           <div onClick={this.next.bind(this)}>Next</div>
           {funky_btn}
