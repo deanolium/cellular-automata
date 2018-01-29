@@ -17,5 +17,18 @@
     "@types/jest": "^22.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }
