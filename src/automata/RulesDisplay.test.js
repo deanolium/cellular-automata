@@ -166,7 +166,7 @@ describe("Rules Display", () => {
 
   it("Sets onClicks for each single rule", () => {
     const wrapper = shallow(<RulesDisplay rule={5} />);
-    const onClick = wrapper.instance().onClick;
+    const onClick = wrapper.instance().calculateAndSendNewRule;
 
     expect(onClick).toBeDefined();
 
@@ -186,12 +186,12 @@ describe("Rules Display", () => {
     var wrapper = shallow(<RulesDisplay rule={5} onClick={onClick} />);
 
     // do the click
-    wrapper.instance().onClick(1, true);
+    wrapper.instance().calculateAndSendNewRule(1, true);
 
     // rule 5 + bit 1 = rule 7
     expect(onClick).toHaveBeenLastCalledWith(7);
 
-    wrapper.instance().onClick(0, false);
+    wrapper.instance().calculateAndSendNewRule(0, false);
     // rule 5 - bit 0 = rule 4
     expect(onClick).toHaveBeenLastCalledWith(4);
   });

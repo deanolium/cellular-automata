@@ -10,11 +10,11 @@ class RulesDisplay extends Component {
     return [...Array(8).keys()].map(x => ((1 << (7 - x)) & ruleId) !== 0);
   }
 
-  onClick(ruleItemId, result) {
+  calculateAndSendNewRule(ruleItemId, result) {
     // determine the new rule id, then call the prop'd onClick
     let newRule = this.props.rule;
 
-    newRule = !result
+    newRule = result
       ? newRule | (1 << ruleItemId)
       : newRule ^ (1 << ruleItemId);
 
@@ -40,7 +40,7 @@ class RulesDisplay extends Component {
         key={`ruleItem-${ruleItemId}`}
         id={ruleItemId}
         onClick={(...args) => {
-          this.onClick(...args);
+          this.calculateAndSendNewRule(...args);
         }}
         left={left}
         center={center}
