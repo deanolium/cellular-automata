@@ -14,7 +14,7 @@ class RulesDisplay extends Component {
     // determine the new rule id, then call the prop'd onClick
     let newRule = this.props.rule;
 
-    newRule = result
+    newRule = !result
       ? newRule | (1 << ruleItemId)
       : newRule ^ (1 << ruleItemId);
 
@@ -39,7 +39,9 @@ class RulesDisplay extends Component {
       <SingleRule
         key={`ruleItem-${ruleItemId}`}
         id={ruleItemId}
-        onClick={this.onClick}
+        onClick={(...args) => {
+          this.onClick(...args);
+        }}
         left={left}
         center={center}
         right={right}

@@ -107,57 +107,53 @@ describe("Rules Display", () => {
   it("Creates appropriate single rules", () => {
     const rulesDisplay = new RulesDisplay();
 
-    expect(mount(rulesDisplay.createSingleRule(0, false))).toEqual(
-      mount(
+    expect(
+      mount(rulesDisplay.createSingleRule(0, false)).containsMatchingElement(
         <SingleRule
           id={0}
           left={false}
           center={false}
           right={false}
           result={false}
-          onClick={rulesDisplay.onClick}
         />
       )
-    );
+    ).toBeTruthy();
 
-    expect(mount(rulesDisplay.createSingleRule(1, false))).toEqual(
-      mount(
+    expect(
+      mount(rulesDisplay.createSingleRule(1, false)).containsMatchingElement(
         <SingleRule
           id={1}
           left={false}
           center={false}
           right={true}
           result={false}
-          onClick={rulesDisplay.onClick}
         />
       )
-    );
+    ).toBeTruthy();
 
-    expect(mount(rulesDisplay.createSingleRule(3, true))).toEqual(
-      mount(
+    expect(
+      mount(rulesDisplay.createSingleRule(3, true)).containsMatchingElement(
         <SingleRule
           id={3}
           left={false}
           center={true}
           right={true}
           result={true}
-          onClick={rulesDisplay.onClick}
         />
       )
-    );
+    ).toBeTruthy();
 
-    expect(mount(rulesDisplay.createSingleRule(7, false))).toEqual(
-      mount(
+    expect(
+      mount(rulesDisplay.createSingleRule(7, false)).containsMatchingElement(
         <SingleRule
           id={7}
           left={true}
           center={true}
           right={true}
           result={false}
-          onClick={rulesDisplay.onClick}
         />
       )
-    );
+    ).toBeTruthy();
   });
 
   it("Gives IDs for each single rule", () => {
@@ -173,17 +169,18 @@ describe("Rules Display", () => {
     const onClick = wrapper.instance().onClick;
 
     expect(onClick).toBeDefined();
+
     expect(
       wrapper
         .find("SingleRule")
         .reduce(
-          (current, rule) => current && rule.prop("onClick") == onClick,
+          (current, rule) => current && rule.prop("onClick") !== undefined,
           true
         )
     ).toBeTruthy();
   });
 
-  it("onClick calls the onClick prop method when called", () => {
+  it("onClick calls the onClick prop method when called with correct new rule", () => {
     const onClick = jest.fn();
 
     var wrapper = shallow(<RulesDisplay rule={5} onClick={onClick} />);

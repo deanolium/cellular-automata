@@ -165,7 +165,12 @@ class App extends Component {
             }}
           />
         </h1>
-        <RulesDisplay rule={this.state.ruleId} />
+        <RulesDisplay
+          rule={this.state.ruleId}
+          onClick={newRule => {
+            this.changeRule(newRule);
+          }}
+        />
         <div className="controls">
           <div onClick={this.prev.bind(this)}>Prev</div>
           {play_pause_btn}
