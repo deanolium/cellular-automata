@@ -10,6 +10,8 @@ class RulesDisplay extends Component {
     return [...Array(8).keys()].map(x => ((1 << (7 - x)) & ruleId) !== 0);
   }
 
+  onClick(ruleItemId, result) {}
+
   createSingleRule(ruleItemId, result) {
     // Creates a single rule based on the id
 
@@ -27,6 +29,7 @@ class RulesDisplay extends Component {
       <SingleRule
         key={`ruleItem-${ruleItemId}`}
         id={ruleItemId}
+        onClick={this.onClick}
         left={left}
         center={center}
         right={right}

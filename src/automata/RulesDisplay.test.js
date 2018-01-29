@@ -115,6 +115,7 @@ describe("Rules Display", () => {
           center={false}
           right={false}
           result={false}
+          onClick={rulesDisplay.onClick}
         />
       )
     );
@@ -127,6 +128,7 @@ describe("Rules Display", () => {
           center={false}
           right={true}
           result={false}
+          onClick={rulesDisplay.onClick}
         />
       )
     );
@@ -139,6 +141,7 @@ describe("Rules Display", () => {
           center={true}
           right={true}
           result={true}
+          onClick={rulesDisplay.onClick}
         />
       )
     );
@@ -151,6 +154,7 @@ describe("Rules Display", () => {
           center={true}
           right={true}
           result={false}
+          onClick={rulesDisplay.onClick}
         />
       )
     );
@@ -164,5 +168,18 @@ describe("Rules Display", () => {
     ).toEqual([7, 6, 5, 4, 3, 2, 1, 0]);
   });
 
-  it("Sets onClicks for each single rule");
+  it("Sets onClicks for each single rule", () => {
+    const wrapper = shallow(<RulesDisplay rule={5} />);
+    const onClick = wrapper.instance().onClick;
+
+    expect(onClick).toBeDefined();
+    expect(
+      wrapper
+        .find("SingleRule")
+        .reduce(
+          (current, rule) => current && rule.prop("onClick") == onClick,
+          true
+        )
+    ).toBeTruthy();
+  });
 });
