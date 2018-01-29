@@ -182,4 +182,20 @@ describe("Rules Display", () => {
         )
     ).toBeTruthy();
   });
+
+  it("onClick calls the onClick prop method when called", () => {
+    const onClick = jest.fn();
+
+    var wrapper = shallow(<RulesDisplay rule={5} onClick={onClick} />);
+
+    // do the click
+    wrapper.instance().onClick(1, true);
+
+    // rule 5 + bit 1 = rule 7
+    expect(onClick).toHaveBeenLastCalledWith(7);
+
+    wrapper.instance().onClick(0, false);
+    // rule 5 - bit 0 = rule 4
+    expect(onClick).toHaveBeenLastCalledWith(4);
+  });
 });

@@ -10,7 +10,17 @@ class RulesDisplay extends Component {
     return [...Array(8).keys()].map(x => ((1 << (7 - x)) & ruleId) !== 0);
   }
 
-  onClick(ruleItemId, result) {}
+  onClick(ruleItemId, result) {
+    // determine the new rule id, then call the prop'd onClick
+    let newRule = this.props.rule;
+
+    newRule = result
+      ? newRule | (1 << ruleItemId)
+      : newRule ^ (1 << ruleItemId);
+
+    // call the prop'd onClick
+    this.props.onClick(newRule);
+  }
 
   createSingleRule(ruleItemId, result) {
     // Creates a single rule based on the id
