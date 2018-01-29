@@ -13,7 +13,7 @@ class SingleRule extends Component {
     return (
       <div
         className="ruleContainer"
-        onClick={() => this.props.onClick(this.props.id, this.props.result)}
+        onClick={() => this.props.onClick(this.props.id, !this.props.result)}
       >
         <div className={`rulebox left ${leftClass}`} />
         <div className={`rulebox center ${centerClass}`} />

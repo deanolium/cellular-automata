@@ -58,6 +58,6 @@ describe("Single Rule Display", () => {
 
     rule.find(".ruleContainer").simulate("click");
 
-    expect(onClick).lastCalledWith(5, false);
+    expect(onClick).lastCalledWith(5, true);
   });
 });
