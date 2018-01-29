@@ -11,7 +11,10 @@ class SingleRule extends Component {
     const resultClass = this.props.result ? "active" : "inactive";
 
     return (
-      <div className="ruleContainer">
+      <div
+        className="ruleContainer"
+        onClick={() => this.props.onClick(this.props.id, this.props.result)}
+      >
         <div className={`rulebox left ${leftClass}`} />
         <div className={`rulebox center ${centerClass}`} />
         <div className={`rulebox right ${rightClass}`} />
