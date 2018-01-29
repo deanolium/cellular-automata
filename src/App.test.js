@@ -78,5 +78,12 @@ describe("Automata App", () => {
       expect(app.state.paused).toBeTruthy();
       expect(app.state.ruleId).toEqual(19);
     });
+
+    it("allows rule id to be changed directly", () => {
+      app.setState({ ruleId: 20, paused: false });    
+      expect(app.state.ruleId).toEqual(20);
+      app.changeRule(12);
+      expect(app.state.ruleId).toEqual(12);
+    })
   });
 });

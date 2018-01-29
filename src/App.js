@@ -116,6 +116,12 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  changeRule(newRuleId) {
+    this.setState({
+      ruleId: newRuleId
+    });
+  }
+
   render() {
     var funky_btn, i;
 
