@@ -3,11 +3,6 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { shallow } from "enzyme";
 
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
-
 describe("Automata App", () => {
   it("renders without crashing", () => {
     const appWrapper = shallow(<App />);

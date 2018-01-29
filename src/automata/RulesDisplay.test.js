@@ -2,12 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { shallow, mount } from "enzyme";
 
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import RulesDisplay from "./RulesDisplay";
 import SingleRule from "./SingleRule";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe("Rules Display", () => {
   it("Displays eight single rules for the given rule id", () => {
