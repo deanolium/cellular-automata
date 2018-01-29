@@ -26,6 +26,7 @@ class RulesDisplay extends Component {
     return (
       <SingleRule
         key={`ruleItem-${ruleItemId}`}
+        id={ruleItemId}
         left={left}
         center={center}
         right={right}

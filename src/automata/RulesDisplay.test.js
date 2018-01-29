@@ -109,26 +109,60 @@ describe("Rules Display", () => {
 
     expect(mount(rulesDisplay.createSingleRule(0, false))).toEqual(
       mount(
-        <SingleRule left={false} center={false} right={false} result={false} />
+        <SingleRule
+          id={0}
+          left={false}
+          center={false}
+          right={false}
+          result={false}
+        />
       )
     );
 
     expect(mount(rulesDisplay.createSingleRule(1, false))).toEqual(
       mount(
-        <SingleRule left={false} center={false} right={true} result={false} />
+        <SingleRule
+          id={1}
+          left={false}
+          center={false}
+          right={true}
+          result={false}
+        />
       )
     );
 
     expect(mount(rulesDisplay.createSingleRule(3, true))).toEqual(
       mount(
-        <SingleRule left={false} center={true} right={true} result={true} />
+        <SingleRule
+          id={3}
+          left={false}
+          center={true}
+          right={true}
+          result={true}
+        />
       )
     );
 
     expect(mount(rulesDisplay.createSingleRule(7, false))).toEqual(
       mount(
-        <SingleRule left={true} center={true} right={true} result={false} />
+        <SingleRule
+          id={7}
+          left={true}
+          center={true}
+          right={true}
+          result={false}
+        />
       )
     );
   });
+
+  it("Gives IDs for each single rule", () => {
+    var wrapper = shallow(<RulesDisplay rule={5} />);
+
+    expect(
+      wrapper.find("SingleRule").map(element => element.prop("id"))
+    ).toEqual([7, 6, 5, 4, 3, 2, 1, 0]);
+  });
+
+  it("Sets onClicks for each single rule");
 });

@@ -80,10 +80,10 @@ describe("Automata App", () => {
     });
 
     it("allows rule id to be changed directly", () => {
-      app.setState({ ruleId: 20, paused: false });    
+      app.setState({ ruleId: 20, paused: false });
       expect(app.state.ruleId).toEqual(20);
       app.changeRule(12);
       expect(app.state.ruleId).toEqual(12);
-    })
+    });
   });
 });
