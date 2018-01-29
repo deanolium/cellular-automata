@@ -107,28 +107,92 @@ describe("Rules Display", () => {
   it("Creates appropriate single rules", () => {
     const rulesDisplay = new RulesDisplay();
 
-    expect(mount(rulesDisplay.createSingleRule(0, false))).toEqual(
-      mount(
-        <SingleRule left={false} center={false} right={false} result={false} />
+    expect(
+      mount(rulesDisplay.createSingleRule(0, false)).containsMatchingElement(
+        <SingleRule
+          id={0}
+          left={false}
+          center={false}
+          right={false}
+          result={false}
+        />
       )
-    );
+    ).toBeTruthy();
 
-    expect(mount(rulesDisplay.createSingleRule(1, false))).toEqual(
-      mount(
-        <SingleRule left={false} center={false} right={true} result={false} />
+    expect(
+      mount(rulesDisplay.createSingleRule(1, false)).containsMatchingElement(
+        <SingleRule
+          id={1}
+          left={false}
+          center={false}
+          right={true}
+          result={false}
+        />
       )
-    );
+    ).toBeTruthy();
 
-    expect(mount(rulesDisplay.createSingleRule(3, true))).toEqual(
-      mount(
-        <SingleRule left={false} center={true} right={true} result={true} />
+    expect(
+      mount(rulesDisplay.createSingleRule(3, true)).containsMatchingElement(
+        <SingleRule
+          id={3}
+          left={false}
+          center={true}
+          right={true}
+          result={true}
+        />
       )
-    );
+    ).toBeTruthy();
 
-    expect(mount(rulesDisplay.createSingleRule(7, false))).toEqual(
-      mount(
-        <SingleRule left={true} center={true} right={true} result={false} />
+    expect(
+      mount(rulesDisplay.createSingleRule(7, false)).containsMatchingElement(
+        <SingleRule
+          id={7}
+          left={true}
+          center={true}
+          right={true}
+          result={false}
+        />
       )
-    );
+    ).toBeTruthy();
+  });
+
+  it("Gives IDs for each single rule", () => {
+    var wrapper = shallow(<RulesDisplay rule={5} />);
+
+    expect(
+      wrapper.find("SingleRule").map(element => element.prop("id"))
+    ).toEqual([7, 6, 5, 4, 3, 2, 1, 0]);
+  });
+
+  it("Sets onClicks for each single rule", () => {
+    const wrapper = shallow(<RulesDisplay rule={5} />);
+    const onClick = wrapper.instance().calculateAndSendNewRule;
+
+    expect(onClick).toBeDefined();
+
+    expect(
+      wrapper
+        .find("SingleRule")
+        .reduce(
+          (current, rule) => current && rule.prop("onClick") !== undefined,
+          true
+        )
+    ).toBeTruthy();
+  });
+
+  it("onClick calls the onClick prop method when called with correct new rule", () => {
+    const onClick = jest.fn();
+
+    var wrapper = shallow(<RulesDisplay rule={5} onClick={onClick} />);
+
+    // do the click
+    wrapper.instance().calculateAndSendNewRule(1, true);
+
+    // rule 5 + bit 1 = rule 7
+    expect(onClick).toHaveBeenLastCalledWith(7);
+
+    wrapper.instance().calculateAndSendNewRule(0, false);
+    // rule 5 - bit 0 = rule 4
+    expect(onClick).toHaveBeenLastCalledWith(4);
   });
 });

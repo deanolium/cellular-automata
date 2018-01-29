@@ -41,4 +41,23 @@ describe("Single Rule Display", () => {
       ruleDisplay.find("div.rulebox.result").hasClass("inactive")
     ).toBeTruthy();
   });
+
+  it("call it's onClick property when clicked on with correct attributes", () => {
+    const onClick = jest.fn();
+
+    const rule = shallow(
+      <SingleRule
+        id={5}
+        left={true}
+        centre={false}
+        right={true}
+        result={false}
+        onClick={onClick}
+      />
+    );
+
+    rule.find(".ruleContainer").simulate("click");
+
+    expect(onClick).lastCalledWith(5, true);
+  });
 });
